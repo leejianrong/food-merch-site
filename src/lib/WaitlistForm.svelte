@@ -1,8 +1,32 @@
 <script>
-  let email = $state('')
+  import { supabase } from './supabaseClient.js'
 
-  function handleSubmit(event) {
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  let email = $state('')
+  let status = $state('idle') // idle | submitting | joined | already | invalid | error
+
+  async function handleSubmit(event) {
     event.preventDefault()
+
+    const trimmed = email.trim()
+    if (!EMAIL_PATTERN.test(trimmed)) {
+      status = 'invalid'
+      return
+    }
+
+    status = 'submitting'
+
+    const { error } = await supabase
+      .from('waitlist_signups')
+      .insert({ email: trimmed, source: 'landing_page' })
+
+    if (!error) {
+      status = 'joined'
+      return
+    }
+
+    status = error.code === '23505' ? 'already' : 'error'
   }
 </script>
 
@@ -12,16 +36,32 @@
       <h3>Be first in line</h3>
       <p>One email when we launch — plus first dibs on the earliest drops. No spam.</p>
     </div>
-    <form onsubmit={handleSubmit}>
-      <input
-        type="email"
-        required
-        bind:value={email}
-        placeholder="you@example.com"
-        aria-label="Email address"
-      />
-      <button class="btn btn-solid" type="submit">Join waitlist</button>
-    </form>
+
+    {#if status === 'joined'}
+      <p class="feedback feedback-success">You're on the list — we'll email you when we launch.</p>
+    {:else if status === 'already'}
+      <p class="feedback feedback-success">You're already on the list — hang tight.</p>
+    {:else}
+      <form onsubmit={handleSubmit} novalidate>
+        <div class="field">
+          <input
+            type="email"
+            bind:value={email}
+            placeholder="you@example.com"
+            aria-label="Email address"
+            disabled={status === 'submitting'}
+          />
+          <button class="btn btn-solid" type="submit" disabled={status === 'submitting'}>
+            {status === 'submitting' ? 'Joining…' : 'Join waitlist'}
+          </button>
+        </div>
+        {#if status === 'invalid'}
+          <p class="feedback feedback-error">That doesn't look like a valid email — check it and try again.</p>
+        {:else if status === 'error'}
+          <p class="feedback feedback-error">Something went wrong on our end — try again in a moment.</p>
+        {/if}
+      </form>
+    {/if}
   </div>
 </section>
 
@@ -49,7 +89,7 @@
     font-size: 0.9rem;
   }
 
-  .newsletter form {
+  .field {
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
@@ -65,5 +105,19 @@
     background: var(--card);
     color: var(--ink);
     min-width: 220px;
+  }
+
+  .feedback {
+    margin: 0.6rem 0 0;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .feedback-success {
+    color: var(--chilli-deep);
+  }
+
+  .feedback-error {
+    color: var(--turmeric);
   }
 </style>
