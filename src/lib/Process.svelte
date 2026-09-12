@@ -48,7 +48,7 @@
 
   .step .num {
     font-family: var(--font-display);
-    color: var(--accent);
+    color: var(--chilli);
     font-size: 1.3rem;
     font-weight: 600;
   }

@@ -11,20 +11,20 @@
         <svg viewBox="0 0 200 200" aria-hidden="true">
           <path
             d="M62 82 L60 176 Q100 190 140 176 L138 82 Z"
-            fill="var(--primary)"
+            fill="var(--chilli)"
             stroke="var(--ink)"
             stroke-width="3"
           />
           <ellipse cx="100" cy="150" rx="30" ry="14" fill="#fff" opacity=".85" />
           <path
             d="M60 100 Q30 96 22 116 Q40 122 58 112"
-            fill="var(--primary)"
+            fill="var(--chilli)"
             stroke="var(--ink)"
             stroke-width="2.5"
           />
           <path
             d="M140 100 Q170 96 178 116 Q160 122 142 112"
-            fill="var(--primary)"
+            fill="var(--chilli)"
             stroke="var(--ink)"
             stroke-width="2.5"
           />
@@ -44,11 +44,11 @@
       <div class="card-art" style="background:#D8E8D4;">
         <span class="pill-badge">Coming soon</span>
         <svg viewBox="0 0 200 200" aria-hidden="true">
-          <ellipse cx="100" cy="150" rx="58" ry="14" fill="var(--accent)" opacity=".35" />
-          <rect x="55" y="70" width="90" height="24" rx="3" fill="var(--accent)" stroke="var(--ink)" stroke-width="3" />
-          <rect x="55" y="94" width="90" height="16" fill="var(--primary)" stroke="var(--ink)" stroke-width="2.5" />
+          <ellipse cx="100" cy="150" rx="58" ry="14" fill="var(--turmeric)" opacity=".35" />
+          <rect x="55" y="70" width="90" height="24" rx="3" fill="var(--turmeric)" stroke="var(--ink)" stroke-width="3" />
+          <rect x="55" y="94" width="90" height="16" fill="var(--chilli)" stroke="var(--ink)" stroke-width="2.5" />
           <rect x="55" y="110" width="90" height="24" rx="3" fill="var(--card)" stroke="var(--ink)" stroke-width="3" />
-          <rect x="60" y="134" width="80" height="20" rx="3" fill="var(--accent)" opacity=".55" stroke="var(--ink)" stroke-width="2" />
+          <rect x="60" y="134" width="80" height="20" rx="3" fill="var(--turmeric)" opacity=".55" stroke="var(--ink)" stroke-width="2" />
         </svg>
       </div>
       <div class="card-body">
@@ -64,14 +64,14 @@
         <svg viewBox="0 0 200 200" aria-hidden="true">
           <path
             d="M50 100 Q100 76 150 100 L146 168 Q100 182 54 168 Z"
-            fill="var(--primary)"
+            fill="var(--chilli)"
             stroke="var(--ink)"
             stroke-width="3"
           />
           <path d="M58 104 Q100 112 142 104" fill="none" stroke="#fff" stroke-width="3" opacity=".7" />
           <path d="M62 116 Q100 124 138 116" fill="none" stroke="#fff" stroke-width="3" opacity=".55" />
           <ellipse cx="72" cy="118" rx="10" ry="6" fill="#fff" opacity=".9" />
-          <ellipse cx="128" cy="122" rx="12" ry="7" fill="var(--accent)" />
+          <ellipse cx="128" cy="122" rx="12" ry="7" fill="var(--turmeric)" />
         </svg>
       </div>
       <div class="card-body">
@@ -87,9 +87,9 @@
         <svg viewBox="0 0 200 200" aria-hidden="true">
           <path d="M64 66 L64 150 Q100 168 136 150 L136 66 Z" fill="var(--card)" stroke="var(--ink)" stroke-width="3" />
           <path d="M136 90 Q166 92 164 116 Q162 138 134 134" fill="none" stroke="var(--ink)" stroke-width="3" />
-          <path d="M96 44 Q104 24 100 30 Q88 18 96 44 Z" fill="var(--accent)" />
-          <path d="M76 100 Q90 150 130 96" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" />
-          <path d="M70 108 Q100 156 122 108" fill="none" stroke="var(--tertiary)" stroke-width="4" stroke-linecap="round" />
+          <path d="M96 44 Q104 24 100 30 Q88 18 96 44 Z" fill="var(--turmeric)" />
+          <path d="M76 100 Q90 150 130 96" fill="none" stroke="var(--chilli)" stroke-width="4" stroke-linecap="round" />
+          <path d="M70 108 Q100 156 122 108" fill="none" stroke="var(--teal)" stroke-width="4" stroke-linecap="round" />
         </svg>
       </div>
       <div class="card-body">
@@ -115,6 +115,12 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px -14px var(--shadow);
   }
 
   .card-art {
@@ -141,8 +147,8 @@
     text-transform: uppercase;
     border-radius: 100px;
     padding: 0.25rem 0.6rem;
-    color: var(--chip-ink);
-    background: var(--tertiary);
+    color: #fff;
+    background: var(--turmeric);
   }
 
   .card-body {

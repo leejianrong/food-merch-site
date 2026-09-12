@@ -1,3 +1,7 @@
+<script>
+  import { theme, toggleTheme } from './theme.svelte.js'
+</script>
+
 <div class="topbar">
   <div class="nav wrap">
     <span class="brand">Tapau Co.</span>
@@ -5,6 +9,9 @@
       <a href="#teaser">Sneak peek</a>
       <a href="#process">How it's made</a>
       <a href="#about">Story</a>
+      <button class="btn btn-outline mode-toggle" type="button" onclick={toggleTheme}>
+        {theme.dark ? 'Light mode' : 'Dark mode'}
+      </button>
       <a class="btn btn-solid waitlist-cta" href="#waitlist">Join waitlist</a>
     </div>
   </div>
@@ -58,10 +65,11 @@
   }
 
   .navlinks a:not(.waitlist-cta):hover {
-    color: var(--accent);
+    color: var(--chilli);
   }
 
-  .waitlist-cta {
+  .waitlist-cta,
+  .mode-toggle {
     padding: 0.55rem 1rem;
     font-size: 0.85rem;
   }
@@ -69,7 +77,7 @@
   .marquee {
     overflow: hidden;
     white-space: nowrap;
-    background: var(--accent);
+    background: var(--chilli);
     border-radius: 100px;
     margin-block: 0.5rem 0;
   }

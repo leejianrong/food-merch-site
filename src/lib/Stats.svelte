@@ -29,7 +29,7 @@
 
   .stat .token {
     background: var(--ink);
-    color: var(--accent);
+    color: var(--turmeric);
     border-radius: 6px;
     min-width: 4.2rem;
     padding: 0.5rem 0.6rem;

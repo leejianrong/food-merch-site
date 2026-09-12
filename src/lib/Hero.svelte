@@ -60,7 +60,7 @@
   }
 
   .hero h1 .pop {
-    color: var(--accent);
+    color: var(--chilli);
   }
 
   .hero p {
@@ -88,7 +88,7 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: var(--primary);
+    background: var(--teal);
   }
 
   .hero-ctas {
@@ -100,7 +100,7 @@
 
   .hero-art {
     aspect-ratio: 1 / 1;
-    background: var(--ground-alt);
+    background: var(--turmeric);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -117,8 +117,8 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: var(--chip-ink);
-    color: var(--chip-text);
+    background: var(--ink);
+    color: var(--turmeric);
     border-radius: 4px;
     padding: 0.35rem 0.55rem;
     font-family: var(--font-display);

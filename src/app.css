@@ -1,3 +1,7 @@
+/* Calamansi & Bandung palette. Variable names (--chilli/--turmeric/--teal) are
+   legacy from earlier palette drafts: --chilli holds green, --turmeric holds
+   pink here. Roles: chilli = primary accent (CTAs, links); turmeric = pop
+   accent (badges, highlights); teal = tertiary accent. */
 :root {
   color-scheme: light;
 
@@ -10,17 +14,32 @@
   --shadow: rgba(26, 32, 19, 0.16);
   --coffee: #4A2E1E;
 
-  --primary: #6FBF3E;
-  --primary-deep: #4E9427;
-  --accent: #F2617A;
-  --accent-deep: #C93E56;
-  --tertiary: #3E8FBF;
-
-  --chip-ink: #1A2013;
-  --chip-text: #F2617A;
+  --chilli: #6FBF3E;
+  --chilli-deep: #4E9427;
+  --turmeric: #F2617A;
+  --teal: #3E8FBF;
 
   --font-display: 'Fredoka', system-ui, sans-serif;
   --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Dark mode is opt-in only, via an explicit in-page toggle (theme.svelte.js
+   sets data-theme on <html>) — never wired to prefers-color-scheme. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --ground: #141A0F;
+  --ground-alt: #1C2415;
+  --card: #202B16;
+  --ink: #F6F5E9;
+  --ink-soft: #BFC7AC;
+  --line: rgba(246, 245, 233, 0.18);
+  --shadow: rgba(0, 0, 0, 0.5);
+
+  --chilli: #8FDE60;
+  --chilli-deep: #6FBF3E;
+  --turmeric: #FF8CA0;
+  --teal: #66B8E8;
 }
 
 * {
@@ -85,14 +104,14 @@ button {
 }
 
 .btn-solid {
-  background: var(--accent);
+  background: var(--chilli);
   color: #fff;
-  border-color: var(--accent);
+  border-color: var(--chilli);
 }
 
 .btn-solid:hover {
-  background: var(--accent-deep);
-  border-color: var(--accent-deep);
+  background: var(--chilli-deep);
+  border-color: var(--chilli-deep);
 }
 
 .btn-outline {
@@ -101,8 +120,8 @@ button {
 }
 
 .btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--chilli);
+  color: var(--chilli);
 }
 
 .btn-outline:disabled,
@@ -112,7 +131,7 @@ button {
 }
 
 section {
-  padding-block: clamp(2rem, 5vw, 3.2rem);
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .section-head {
@@ -120,7 +139,7 @@ section {
   justify-content: space-between;
   align-items: end;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   flex-wrap: wrap;
 }
 

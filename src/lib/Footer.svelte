@@ -32,6 +32,6 @@
   }
 
   footer a:hover {
-    color: var(--accent);
+    color: var(--chilli);
   }
 </style>
