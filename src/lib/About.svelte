@@ -13,7 +13,7 @@
     <div>
       <h2>Built by one person, a laptop, and a lot of nostalgia for kopitiam formica tables.</h2>
       <p>
-        Tapau Co. started as a way to keep the look of the neighbourhood kopitiam — enamel plates,
+        Peng Fashion started as a way to keep the look of the neighbourhood kopitiam — enamel plates,
         tile floors, hand-painted signboards — alive on things people actually use every day.
       </p>
       <p>

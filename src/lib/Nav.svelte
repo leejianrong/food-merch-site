@@ -4,7 +4,7 @@
 
 <div class="topbar">
   <div class="nav wrap">
-    <span class="brand">Tapau Co.</span>
+    <span class="brand">Peng Fashion</span>
     <div class="navlinks">
       <a href="#teaser">Sneak peek</a>
       <a href="#process">How it's made</a>

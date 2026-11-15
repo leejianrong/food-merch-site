@@ -1,9 +1,8 @@
 <script>
-  import { supabase } from './supabaseClient.js'
-
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   let email = $state('')
+  let website = $state('') // honeypot, must stay empty
   let status = $state('idle') // idle | submitting | joined | already | invalid | error
 
   async function handleSubmit(event) {
@@ -17,16 +16,19 @@
 
     status = 'submitting'
 
-    const { error } = await supabase
-      .from('waitlist_signups')
-      .insert({ email: trimmed, source: 'landing_page' })
-
-    if (!error) {
-      status = 'joined'
-      return
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: trimmed, website }),
+      })
+      if (res.status === 201) status = 'joined'
+      else if (res.status === 200) status = 'already'
+      else if (res.status === 400) status = 'invalid'
+      else status = 'error'
+    } catch {
+      status = 'error'
     }
-
-    status = error.code === '23505' ? 'already' : 'error'
   }
 </script>
 
@@ -43,6 +45,15 @@
       <p class="feedback feedback-success">You're already on the list — hang tight.</p>
     {:else}
       <form onsubmit={handleSubmit} novalidate>
+        <input
+          class="hp"
+          type="text"
+          name="website"
+          bind:value={website}
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
         <div class="field">
           <input
             type="email"
@@ -66,6 +77,11 @@
 </section>
 
 <style>
+  .hp {
+    position: absolute;
+    left: -9999px;
+  }
+
   .newsletter {
     display: flex;
     justify-content: space-between;
