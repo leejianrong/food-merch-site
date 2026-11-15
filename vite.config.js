@@ -3,6 +3,6 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/food-merch-site/',
+  server: { proxy: { '/api': 'http://localhost:8080' } },
   plugins: [svelte()],
 })

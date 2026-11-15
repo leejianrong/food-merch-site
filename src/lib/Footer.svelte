@@ -1,5 +1,5 @@
 <footer class="wrap">
-  <span>&copy; 2026 Tapau Co. — Singapore hawker-food merch, waitlist open.</span>
+  <span>&copy; 2026 Peng Fashion — Singapore hawker-food merch, waitlist open.</span>
   <nav>
     <a href="#teaser">Sneak peek</a>
     <a href="#process">Process</a>
